@@ -1,12 +1,16 @@
 import { Header, Loader } from 'components';
 import { lazy, Suspense, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { Navigate, Route, Routes } from 'react-router-dom';
+import { setBaseCurency } from 'reduxState/curencySlice';
 import { getUserInfo } from 'service/opencagedataApi';
 
 const Home = lazy(() => import('pages/Home'));
 const Rates = lazy(() => import('pages/Rates'));
 
 export const App = () => {
+  const dispatch = useDispatch();
+
   useEffect(() => {
     var options = {
       enableHighAccuracy: true,
@@ -24,12 +28,12 @@ export const App = () => {
       console.log(`Плюс-минус ${crd.accuracy} метров.`);
     }
 
-    function error(err) {
-      console.warn(`ERROR(${err.code}): ${err.message}`);
+    function error() {
+      dispatch(setBaseCurency('USD'));
     }
 
     navigator.geolocation.getCurrentPosition(success, error, options);
-  }, []);
+  }, [dispatch]);
 
   return (
     <>

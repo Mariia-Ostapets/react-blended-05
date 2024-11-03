@@ -3,7 +3,7 @@ import { lazy, Suspense, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { setBaseCurency } from 'reduxState/curencySlice';
-import { getUserInfo } from 'service/opencagedataApi';
+import { fetchBaseCurrency } from 'reduxState/operation';
 
 const Home = lazy(() => import('pages/Home'));
 const Rates = lazy(() => import('pages/Rates'));
@@ -19,13 +19,7 @@ export const App = () => {
     };
 
     function success(pos) {
-      var crd = pos.coords;
-      getUserInfo(pos.coords);
-
-      console.log('Ваше текущее местоположение:');
-      console.log(`Широта: ${crd.latitude}`);
-      console.log(`Долгота: ${crd.longitude}`);
-      console.log(`Плюс-минус ${crd.accuracy} метров.`);
+      dispatch(fetchBaseCurrency(pos.coords));
     }
 
     function error() {

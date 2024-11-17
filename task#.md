@@ -165,8 +165,8 @@ const urlPosition = `https://api.opencagedata.com/geocode/v1/json?q=${lat}+${lon
 - Відповідно до умов завдання, користувач вводить необхідні дані в форматі
   `15 USD in UAH`. В документації бекенда
   [Exchange Rates Data API](https://apilayer.com/marketplace/exchangerates_data-api)
-  вказано, що потрібно передавати `to`, `from`, `amount`. Тому при сабміті форми
-  з рядка `15 USD in UAH` потрібно отримати об'єкт
+  вказано, що потрібно передавати `to`, `from`, `amount`. при сабміті форми з
+  рядка `15 USD in UAH` потрібно отримати об'єкт
 
 ```bash
 {

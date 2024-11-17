@@ -10,7 +10,7 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import { curencyReducer } from './curencySlice';
+import { currencyReducer } from './currencySlice';
 
 const persistConfig = {
   key: 'curency',
@@ -19,10 +19,10 @@ const persistConfig = {
   whitelist: ['baseCurency'],
 };
 
-const persistedReducer = persistReducer(persistConfig, curencyReducer);
+const persistedReducer = persistReducer(persistConfig, currencyReducer);
 
 export const store = configureStore({
-  reducer: { curency: persistedReducer },
+  reducer: { currency: persistedReducer },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {

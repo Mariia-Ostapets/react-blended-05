@@ -2,7 +2,7 @@ import { Header, Loader } from 'components';
 import { lazy, Suspense, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { setBaseCurency } from 'reduxState/curencySlice';
+import { setBaseCurrency } from 'reduxState/currencySlice';
 import { fetchBaseCurrency } from 'reduxState/operation';
 
 const Home = lazy(() => import('pages/Home'));
@@ -23,7 +23,7 @@ export const App = () => {
     }
 
     function error() {
-      dispatch(setBaseCurency('USD'));
+      dispatch(setBaseCurrency('USD'));
     }
 
     navigator.geolocation.getCurrentPosition(success, error, options);
